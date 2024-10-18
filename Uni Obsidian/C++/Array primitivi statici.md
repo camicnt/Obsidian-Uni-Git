@@ -153,4 +153,3 @@ for(int (*end)[2] = &array2[2]; ptr2 <= end; ++ptr2){
 }
 ```
 
-prova prova
