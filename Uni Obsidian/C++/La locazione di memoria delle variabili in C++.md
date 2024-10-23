@@ -53,6 +53,8 @@ Per rimuovere un dato dinamico si usa **==delete==**.
 
 **mulloc** e **calloc** sono funzioni C di basso livello e non sono in grado di gestire la allocazione e rimozione delle classi in memoria. In C++ viene usata la keyword **new** e **delate**.
 
+##### Ricapitolando
+I dati automatici (sullo stack) vengono deallocati automaticamente all’uscita di scope. I dati dinamici (sullo heap) vengono deallocati solo tramite delete esplicito. Non esiste Garbage Collection.
 #### Allocare un'array di dati dinamici
 Occorre usare `delete[]` se abbiamo un array di dati dinamici.
 ```

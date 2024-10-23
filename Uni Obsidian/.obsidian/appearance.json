@@ -1,7 +1,8 @@
 {
-  "cssTheme": "Obsidianotion",
-  "accentColor": "#8774b4",
+  "cssTheme": "Atom",
+  "accentColor": "#8970c2",
   "textFontFamily": "Inter,Arial,Times New Roman",
   "interfaceFontFamily": "Inter,Arial,Times New Roman",
-  "monospaceFontFamily": "Inter,Arial,Times New Roman"
+  "monospaceFontFamily": "Inter,Arial,Times New Roman",
+  "theme": "obsidian"
 }
