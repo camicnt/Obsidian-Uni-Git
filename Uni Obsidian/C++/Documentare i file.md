@@ -32,7 +32,14 @@ Posso scrivere esplicitamente la descrizione di un parametro, oppure la tengo pi
 ```
 ##### Documentare la return 
 `@return la radice quadrata approssimata di x`
+##### Postcondizioni
+`@post len(str) == len(result)`
+Sono delle condizioni che assolutamente devono valere, al termine dell'esecuzione del mio blocco di codice. Qualcosa che mi dica "tutto è andato bene".
+Vengono fatte tramite delle asserzioni di controllo.
 
+##### Lancio di [eccezioni](Eccezioni)
+`@throw std::bad_alloc in caso di fallimento della new`
+Il mio blocco di codice potrebbe generare un'eccezione, e la cosa va segnalata.
 ## File di progetto di Doxygen  
 ![[Pasted image 20241017102255.png]]
 Metto il punto per indicare una qualsiasi cartella.
@@ -54,4 +61,43 @@ Per generare la documentazione scrivere sul **cmd**: `doxygen`
 La cartella `HTML` **DEVE ESISTERE**. Il file **files.html** contiene tutta la documentazione.
 Per aggiornare i files, basta rieseguire doxygen.
 Nel **Makefile** si può aggiungere un tag per generare anche la documentazione del codice.
+
+## Documentare le funzioni
+E' importante segnalare la necessità di rimuovere dei dati dalla memoria, che sono stati creati sullo heap e di conseguenza devono essere cancellati dalla memoria dal chiamante. 
+Ad esempio se una funzione crea un dato dinamico, dobbiamo dire al chiamante, tramite documentazione, che quel dato deve essere cancellato.
+
+**La cessione degli ownership deve essere indicata**
+**La generazione di eccezioni deve essere indicata**
+
+```
+/*4. Scrivete una funzione che ritorna una copia di una stringa passata */
+/**
+ * Documentazione:
+ * Crea una copia della stringa C di input.
+ * La stringa creata è creata sullo heap e ceduta al chiamante che deve rimuoverla dalla memoria.
+ *
+ * @param srt stringa C di input
+ * @return puntatore alla stringa clonata
+ * @pre str != nullptr
+ * @post len(str) == len(result)
+ * @post str[i] == result[i] per i = 0 per len(str) -> controllo consigliato
+ * @throw std::bad_alloc in caso di fallimento della new
+**/
+
+char *clona_stringa(const char *str) { // ritorna un puntatore a char
+    assert(str!=nullptr);
+    char *copia = new char[lunghezza_stringa(str) + 1];
+    char *inizio = copia;
+    while(*str!='\0'){
+        *inizio = *str;
+        ++str;
+        ++inizio;
+    }
+    *inizio = '\0'; 
+
+    assert(lunghezza_stringa(str) == lunghezza_stringa(copia));
+  
+    return copia;
+}
+```
 

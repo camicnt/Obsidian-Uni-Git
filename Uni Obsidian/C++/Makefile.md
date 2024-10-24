@@ -24,4 +24,3 @@ Il make è interessato ai file sorgenti o intermedi per realizzare i target, non
 clean:
     rm *.o *.exe
 ```
-

@@ -87,7 +87,6 @@ Solitamente contiene:
 - enumerazione
 - typedef
 **NOTA BENE:** usare **SEMRPE** le guardie ( #ifndef, #endif...) 
-
 ## Asserzioni
 Un'**asserzione** è un test che si possono inserire nel codice e associamo a questo test una condizione che deve essere vera, se la condizione non è vera viene generato un errore a runtime (non è un'eccezione). Dunque, sono valutati a runtime.
 Vengono usate per testare il codice, infatti sono test automatici che vengono valutati a runtime.
